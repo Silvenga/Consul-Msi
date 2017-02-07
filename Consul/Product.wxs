@@ -16,7 +16,7 @@
         </Directory>
       </Directory>
       <Component Id="ConsulPath" Guid="3B9E2CDA-68AC-49D4-B375-9814B93BEAFD">
-        <Environment Id="PATH" Name="PATH" Value="[ConsulBinDirRef]bin" Permanent="no" Part="last" Action="set"
+        <Environment Id="PATH" Name="PATH" Value="[ConsulBinDirRef]" Permanent="no" Part="last" Action="set"
                      System="yes" />
       </Component>
     </Directory>
