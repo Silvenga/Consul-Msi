@@ -13,15 +13,10 @@
                    System="yes" />
     </Component>
 
-    <Component Id="ConsulJson" Directory="ConsulDir" Guid="BE10E151-42A1-4E46-8F9F-5792031DDEE5" Win64="yes">
-      <File Id="ConsulJson" KeyPath="yes" Name="consul.json" Source="SourceDir\configs\main.json" />
-    </Component>
-
     <ComponentGroup Id="Consul">
       <ComponentRef Id="ConsulDir" />
       <ComponentRef Id="ConsulExe" />
       <ComponentRef Id="ConsulPath" />
-      <ComponentRef Id="ConsulJson" />
     </ComponentGroup>
 
   </Fragment>

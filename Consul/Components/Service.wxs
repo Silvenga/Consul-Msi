@@ -4,6 +4,11 @@
   <!--https://github.com/StefanScherer/consul-agent/blob/master/packaging/msi/services.wxs-->
   <?include ../Constants.wxi ?>
   <Fragment>
+
+    <Component Id="ConsulJson" Directory="ConsulDir" Guid="BE10E151-42A1-4E46-8F9F-5792031DDEE5" Win64="yes">
+      <File Id="ConsulJson" KeyPath="yes" Name="consul.json" Source="SourceDir\configs\main.json" />
+    </Component>
+
     <Component Id="ConsulService" Guid="864949E2-5644-4DA6-9A4D-215D0BD3FE5F" Directory="ConsulDir" Win64="yes">
 
       <?define Name="consul-agent" ?>
@@ -75,6 +80,7 @@
       <ComponentRef Id="ConsulLogDir" />
       <ComponentRef Id="ConsulDataDir" />
       <ComponentRef Id="ConsulConfigDir" />
+      <ComponentRef Id="ConsulJson" />
       <ComponentRef Id="ConsulService" />
       <ComponentRef Id="CleanupLogs" />
     </ComponentGroup>
