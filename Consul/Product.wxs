@@ -5,25 +5,12 @@
   <Product Id="*" Name="Consul" Language="1033" Version="1.0.0.0" Manufacturer="Silvenga"
            UpgradeCode="A70F0BBD-A129-412F-B2E4-CE2E36A0968F">
 
-    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x64" />
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" />
-    <Condition Message="You need to be an administrator to install this product.">Privileged</Condition>
-
-    <Directory Id="TARGETDIR" Name="SourceDir">
-      <Directory Id="ProgramFilesFolder">
-        <Directory Id="ConsulBinDirRef" Name="Consul">
-        </Directory>
-      </Directory>
-      <Component Id="ConsulPath" Guid="3B9E2CDA-68AC-49D4-B375-9814B93BEAFD">
-        <Environment Id="PATH" Name="PATH" Value="[ConsulBinDirRef]" Permanent="no" Part="last" Action="set"
-                     System="yes" />
-      </Component>
-    </Directory>
 
     <Feature Id="Complete" Title="Consul" Level="1">
-      <ComponentGroupRef Id="ConsulBin" />
-      <ComponentRef Id="ConsulPath" />
+      <ComponentGroupRef Id="Consul" />
     </Feature>
 
   </Product>

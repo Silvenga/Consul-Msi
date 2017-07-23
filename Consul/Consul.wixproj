@@ -24,8 +24,12 @@
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Directory.wxs" />
+    <Compile Include="Components\Consul.wxs" />
+    <Compile Include="Components\DirectoryStructure.wxs" />
     <Compile Include="Product.wxs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Components" />
   </ItemGroup>
   <Import Project="$(WixTargetsPath)" />
   <!--

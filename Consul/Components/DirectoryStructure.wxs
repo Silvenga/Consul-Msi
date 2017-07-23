@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="ProgramFiles64Folder">
+        <Directory Id="ConsulDir" Name="Consul">
+        </Directory>
+      </Directory>
+    </Directory>
+
+    <Component Id="ConsulDir" Directory="ConsulDir" Guid="7FAC2EAE-4799-4414-816E-DD75B674360D" Win64="yes">
+      <CreateFolder />
+    </Component>
+
+  </Fragment>
+</Wix>

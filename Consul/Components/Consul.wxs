@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Fragment>
+
+    <DirectoryRef Id="ConsulDir">
+      <Component Id="ConsulExe" Guid="FB549947-F1B2-4E77-8526-114319800828" Win64="yes">
+        <File Id="ConsulExe" KeyPath="yes" Name="consul.exe" Source="SourceDir\consul.exe" />
+      </Component>
+      <Component Id="ConsulPath" Guid="3B9E2CDA-68AC-49D4-B375-9814B93BEAFD" Win64="yes" KeyPath="yes">
+        <Environment Id="ConsulPath" Name="PATH" Value="[ConsulDir]" Permanent="no" Part="last" Action="set"
+                     System="yes" />
+      </Component>
+    </DirectoryRef>
+
+    <ComponentGroup Id="Consul">
+      <ComponentRef Id="ConsulDir" />
+      <ComponentRef Id="ConsulExe" />
+      <ComponentRef Id="ConsulPath" />
+    </ComponentGroup>
+
+  </Fragment>
+</Wix>
