@@ -5,11 +5,11 @@
 
   <Fragment>
 
-    <Component Id="ConsulConfigureDns" Guid="DACED64B-68DB-4B17-BB37-12215BC3558F" Directory="ConsulConfigDir">
+    <Component Id="ConsulConfigureDns" Guid="DACED64B-68DB-4B17-BB37-12215BC3558F" Directory="ConsulConfigDir" Win64="yes">
       <File Id="ConsulDnsJson" Name="dns.json" Source="SourceDir\configs\dns.json" KeyPath="yes" />
     </Component>
 
-    <Component Id="ConsulConfigureDnsCache" Guid="C133A4EC-31F3-485A-B2E1-F2D3FB1F0ABD" Directory="ConsulDir">
+    <Component Id="ConsulConfigureDnsCache" Guid="C133A4EC-31F3-485A-B2E1-F2D3FB1F0ABD" Directory="ConsulDir" Win64="yes">
       <ServiceControl Id="ReloadDnsCache" Name="DnsCache" Stop="both" Start="both" Wait="yes" />
       <RegistryKey Root="HKLM" Key="SYSTEM\CurrentControlSet\Services\DnsCache\Parameters">
         <!--TODO Can I clean this up?-->
