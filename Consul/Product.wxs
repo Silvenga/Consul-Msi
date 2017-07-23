@@ -10,18 +10,18 @@
     <MediaTemplate EmbedCab="yes" />
 
     <Feature Id="Consul"
-             Title="Consul Agent (Complete)"
+             Title="Consul Agent"
              Level="1"
              Display="expand"
              Absent="disallow"
              AllowAdvertise="no"
-             Description="Install the Consul agent and add it to the system path.">
+             Description="Install the Consul agent binary and add it to the system path.">
       <ComponentGroupRef Id="Consul" />
 
       <Feature Id="Service"
                Title="Service Configuration"
                AllowAdvertise="no"
-               Description="Install Consul as a service and configure defaults (e.g. data directory).">
+               Description="Configure Consul to run as a service and configure defaults (e.g. data directory).">
         <ComponentGroupRef Id="ConsulService" />
 
         <Feature Id="Dns"
