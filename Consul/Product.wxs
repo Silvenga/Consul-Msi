@@ -9,10 +9,23 @@
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" />
 
-    <Feature Id="Client" Title="Consul Agent (Client)" Level="1">
+    <Feature Id="Complete" Title="Consul Agent (Complete)" Level="1" Display="expand"
+             Description="Install the Consul agent and add it to the system path.">
       <ComponentGroupRef Id="Consul" />
-      <ComponentGroupRef Id="ConsulService" />
-      <ComponentGroupRef Id="ConsulFirewall" />
+
+      <Feature Id="Service" Title="Service"
+               Description="Install Consul as a service and configure defaults (e.g. data directory).">
+        <ComponentGroupRef Id="ConsulService" />
+
+        <Feature Id="Dns"
+                 Description="Configure to run as a local DNS server. Modifies Window's DNSCache service to play nice with Consul and listens on 127.0.0.1:53.">
+          <ComponentGroupRef Id="ConsulDns" />
+        </Feature>
+      </Feature>
+
+      <Feature Id="Firewall" Title="Open Firewall" Description="Open ports required for LAN gossip.">
+        <ComponentGroupRef Id="ConsulFirewall" />
+      </Feature>
     </Feature>
 
   </Product>
