@@ -6,11 +6,26 @@
     <Directory Id="TARGETDIR" Name="SourceDir">
       <Directory Id="ProgramFiles64Folder">
         <Directory Id="ConsulDir" Name="Consul">
+          <Directory Id="ConsulLogDir" Name="Logs">
+          </Directory>
+          <Directory Id="ConsulDataDir" Name="Data">
+          </Directory>
+          <Directory Id="ConsulConfigDir" Name="Config">
+          </Directory>
         </Directory>
       </Directory>
     </Directory>
 
     <Component Id="ConsulDir" Directory="ConsulDir" Guid="7FAC2EAE-4799-4414-816E-DD75B674360D" Win64="yes">
+      <CreateFolder />
+    </Component>
+    <Component Id="ConsulLogDir" Directory="ConsulLogDir" Guid="23825ECA-14EB-42B5-817C-AEF68DCA85DC" Win64="yes">
+      <CreateFolder />
+    </Component>
+    <Component Id="ConsulDataDir" Directory="ConsulDataDir" Guid="9360B421-3E9F-4EBA-BA64-0C8948D1F31F" Win64="yes">
+      <CreateFolder />
+    </Component>
+    <Component Id="ConsulConfigDir" Directory="ConsulConfigDir" Guid="3B7FC070-CE68-471E-84B9-2B4F5453153C" Win64="yes">
       <CreateFolder />
     </Component>
 
