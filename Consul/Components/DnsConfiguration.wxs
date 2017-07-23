@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <!--https://github.com/hashicorp/consul/issues/758#issuecomment-77301201-->
+
+  <Fragment>
+
+    <Component Id="ConsulConfigureDns" Guid="DACED64B-68DB-4B17-BB37-12215BC3558F" Directory="ConsulConfigDir">
+      <File Id="ConsulDnsJson" Name="dns.json" Source="SourceDir\configs\dns.json" KeyPath="yes" />
+    </Component>
+
+    <Component Id="ConsulConfigureDnsCache" Guid="C133A4EC-31F3-485A-B2E1-F2D3FB1F0ABD" Directory="ConsulDir">
+      <ServiceControl Id="ReloadDnsCache" Name="DnsCache" Stop="both" Start="both" Wait="yes" />
+      <RegistryKey Root="HKLM" Key="SYSTEM\CurrentControlSet\Services\DnsCache\Parameters">
+        <RegistryValue Name="MaxNegativeCacheTtl" Value="0" Type="integer" />
+      </RegistryKey>
+    </Component>
+
+    <ComponentGroup Id="ConsulDns">
+      <ComponentRef Id="ConsulConfigDir" />
+      <ComponentRef Id="ConsulConfigureDns" />
+      <ComponentRef Id="ConsulConfigureDnsCache" />
+    </ComponentGroup>
+
+  </Fragment>
+</Wix>
