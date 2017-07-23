@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
-
-  <Product Id="*" Name="Consul" Language="1033" Version="1.0.0.0" Manufacturer="Silvenga"
+  <?include ./Constants.wxi ?>
+  <Product Id="*" Name="Consul" Language="1033" Version="$(var.Version)" Manufacturer="Silvenga"
            UpgradeCode="A70F0BBD-A129-412F-B2E4-CE2E36A0968F">
 
     <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x64" />
@@ -11,6 +11,7 @@
 
     <Feature Id="Complete" Title="Consul" Level="1">
       <ComponentGroupRef Id="Consul" />
+      <ComponentGroupRef Id="ConsulService" />
     </Feature>
 
   </Product>

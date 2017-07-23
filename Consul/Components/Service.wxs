@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
+  <!--https://github.com/StefanScherer/consul-agent/blob/master/packaging/msi/services.wxs-->
+  <?include ../Constants.wxi ?>
+  <Fragment>
+    <Component Id="ConsulService" Guid="864949E2-5644-4DA6-9A4D-215D0BD3FE5F" Directory="ConsulDir" Win64="yes">
+
+      <?define Name="consul-agent" ?>
+
+      <File Id="NssnExe" Source="SourceDir\nssm.exe" KeyPath="yes" />
+
+      <ServiceInstall Id="EnsureService"
+                      Account="LocalSystem"
+                      ErrorControl="normal"
+                      Name="$(var.Name)"
+                      Start="auto"
+                      Type="ownProcess"
+                      Vital="yes"
+                      Description="An agent of Consul."
+                      DisplayName="Consul Agent">
+
+      </ServiceInstall>
+
+      <util:ServiceConfig FirstFailureActionType="restart"
+                          SecondFailureActionType="restart"
+                          ThirdFailureActionType="none"
+                          ServiceName="$(var.Name)" />
+
+      <ServiceControl Id="ControlService"
+                      Name="$(var.Name)"
+                      Wait="yes"
+                      Start="install"
+                      Stop="both"
+                      Remove="uninstall" />
+
+      <RegistryKey Root="HKLM" Key="SYSTEM\CurrentControlSet\Services\$(var.Name)">
+        <RegistryKey Key="Parameters">
+
+          <!--https://nssm.cc/usage-->
+
+          <RegistryValue Name="AppDirectory" Value="[ConsulDir]" Type="expandable" />
+          <RegistryValue Name="Application" Value="[ConsulDir]consul.exe" Type="expandable" />
+          <RegistryValue Name="AppParameters"
+                         Value='agent "-data-dir=[ConsulDataDir]." "-config-file=[ConsulDir]consul.json" "-config-dir=[ConsulConfigDir]."'
+                         Type="expandable" />
+
+          <RegistryValue Name="AppStdout" Value="[ConsulLogDir]$(var.Name).log" Type="expandable" />
+          <RegistryValue Name="AppStderr" Value="[ConsulLogDir]$(var.Name).err" Type="expandable" />
+          <RegistryValue Name="AppRotateFiles" Value="1" Type="integer" />
+          <RegistryValue Name="AppRotateOnline" Value="1" Type="integer" />
+
+          <RegistryValue Name="AppRotateBytes" Value="104857600" Type="integer" />
+          <RegistryValue Name="AppStdoutCopyAndTruncate" Value="1" Type="integer" />
+          <RegistryValue Name="AppStderrCopyAndTruncate" Value="1" Type="integer" />
+          <RegistryValue Name="AppRotateDelay" Value="1000" Type="integer" />
+
+          <RegistryKey Key="AppExit">
+            <RegistryValue Type="string" Value="Restart" />
+          </RegistryKey>
+
+        </RegistryKey>
+      </RegistryKey>
+
+    </Component>
+
+    <Component Id="CleanupLogs" Guid="58982D3E-8FA9-4DE4-ABC2-C56A7349918A" Directory="ConsulLogDir" Win64="yes">
+      <RemoveFile Id="CleanupLogs" Name="*" On="uninstall" />
+    </Component>
+
+    <ComponentGroup Id="ConsulService">
+      <ComponentRef Id="ConsulDir" />
+      <ComponentRef Id="ConsulLogDir" />
+      <ComponentRef Id="ConsulDataDir" />
+      <ComponentRef Id="ConsulConfigDir" />
+      <ComponentRef Id="ConsulService" />
+      <ComponentRef Id="CleanupLogs" />
+    </ComponentGroup>
+
+  </Fragment>
+</Wix>
