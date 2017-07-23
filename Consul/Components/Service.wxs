@@ -41,6 +41,7 @@
 
           <RegistryValue Name="AppDirectory" Value="[ConsulDir]" Type="expandable" />
           <RegistryValue Name="Application" Value="[ConsulDir]consul.exe" Type="expandable" />
+          <!--The '.' are required to prevent a backlash from escaping the end quotes.-->
           <RegistryValue Name="AppParameters"
                          Value='agent "-data-dir=[ConsulDataDir]." "-config-file=[ConsulDir]consul.json" "-config-dir=[ConsulConfigDir]."'
                          Type="expandable" />
@@ -65,7 +66,8 @@
     </Component>
 
     <Component Id="CleanupLogs" Guid="58982D3E-8FA9-4DE4-ABC2-C56A7349918A" Directory="ConsulLogDir" Win64="yes">
-      <RemoveFile Id="CleanupLogs" Name="*" On="uninstall" />
+      <RemoveFile Id="CleanupAppStdout" Name="[ConsulLogDir]$(var.Name).log" On="uninstall" />
+      <RemoveFile Id="CleanupAppStderr" Name="[ConsulLogDir]$(var.Name).err" On="uninstall" />
     </Component>
 
     <ComponentGroup Id="ConsulService">
