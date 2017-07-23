@@ -2,11 +2,20 @@
 
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <?include ./Constants.wxi ?>
-  <Product Id="*" Name="Consul" Language="1033" Version="$(var.Version)" Manufacturer="Silvenga"
+  <Product Id="*"
+           Name="Consul Agent $(var.Version)"
+           Language="1033"
+           Version="$(var.Version)"
+           Manufacturer="HashiCorp"
            UpgradeCode="A70F0BBD-A129-412F-B2E4-CE2E36A0968F">
 
-    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" Platform="x64" />
-    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <Package InstallerVersion="200"
+             Compressed="yes"
+             InstallScope="perMachine"
+             Platform="x64"
+             Description="Provides packaging for the Consul agent, version $(var.Version)."
+             Manufacturer="Silvenga" />
+    <MajorUpgrade AllowDowngrades="yes" />
     <MediaTemplate EmbedCab="yes" />
 
     <Feature Id="Consul"
