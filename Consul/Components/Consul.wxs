@@ -3,20 +3,25 @@
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
   <Fragment>
 
-    <DirectoryRef Id="ConsulDir">
-      <Component Id="ConsulExe" Guid="FB549947-F1B2-4E77-8526-114319800828" Win64="yes">
-        <File Id="ConsulExe" KeyPath="yes" Name="consul.exe" Source="SourceDir\consul.exe" />
-      </Component>
-      <Component Id="ConsulPath" Guid="3B9E2CDA-68AC-49D4-B375-9814B93BEAFD" Win64="yes" KeyPath="yes">
-        <Environment Id="ConsulPath" Name="PATH" Value="[ConsulDir]" Permanent="no" Part="last" Action="set"
-                     System="yes" />
-      </Component>
-    </DirectoryRef>
+    <Component Id="ConsulExe" Directory="ConsulDir" Guid="FB549947-F1B2-4E77-8526-114319800828" Win64="yes">
+      <File Id="ConsulExe" KeyPath="yes" Name="consul.exe" Source="SourceDir\consul.exe" />
+    </Component>
+    
+    <Component Id="ConsulPath" Directory="ConsulDir" Guid="3B9E2CDA-68AC-49D4-B375-9814B93BEAFD" Win64="yes"
+               KeyPath="yes">
+      <Environment Id="ConsulPath" Name="PATH" Value="[ConsulDir]" Permanent="no" Part="last" Action="set"
+                   System="yes" />
+    </Component>
+
+    <Component Id="ConsulJson" Directory="ConsulDir" Guid="BE10E151-42A1-4E46-8F9F-5792031DDEE5" Win64="yes">
+      <File Id="ConsulJson" KeyPath="yes" Name="consul.json" Source="SourceDir\configs\main.json" />
+    </Component>
 
     <ComponentGroup Id="Consul">
       <ComponentRef Id="ConsulDir" />
       <ComponentRef Id="ConsulExe" />
       <ComponentRef Id="ConsulPath" />
+      <ComponentRef Id="ConsulJson" />
     </ComponentGroup>
 
   </Fragment>
