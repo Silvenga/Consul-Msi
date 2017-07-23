@@ -9,24 +9,41 @@
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" />
 
-    <Feature Id="Complete" Title="Consul Agent (Complete)" Level="1" Display="expand"
+    <Feature Id="Consul"
+             Title="Consul Agent (Complete)"
+             Level="1"
+             Display="expand"
+             Absent="disallow"
+             AllowAdvertise="no"
              Description="Install the Consul agent and add it to the system path.">
       <ComponentGroupRef Id="Consul" />
 
-      <Feature Id="Service" Title="Service"
+      <Feature Id="Service"
+               Title="Service Configuration"
+               AllowAdvertise="no"
                Description="Install Consul as a service and configure defaults (e.g. data directory).">
         <ComponentGroupRef Id="ConsulService" />
 
         <Feature Id="Dns"
+                 Title="DNS Configuration"
+                 AllowAdvertise="no"
                  Description="Configure to run as a local DNS server. Modifies Window's DNSCache service to play nice with Consul and listens on 127.0.0.1:53.">
           <ComponentGroupRef Id="ConsulDns" />
         </Feature>
       </Feature>
 
-      <Feature Id="Firewall" Title="Open Firewall" Description="Open ports required for LAN gossip.">
+      <Feature Id="Firewall"
+               Title="Firewall Configuration"
+               Description="Open ports required for LAN gossip."
+               AllowAdvertise="no">
         <ComponentGroupRef Id="ConsulFirewall" />
       </Feature>
     </Feature>
+
+    <UIRef Id="WixUI_FeatureTree" />
+    <UIRef Id="WixUI_ErrorProgressText" />
+
+    <WixVariable Id="WixUILicenseRtf" Value="SourceDir\assets\mpl-2.0.rtf" />
 
   </Product>
 
