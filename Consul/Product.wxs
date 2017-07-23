@@ -9,9 +9,10 @@
     <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
     <MediaTemplate EmbedCab="yes" />
 
-    <Feature Id="Complete" Title="Consul" Level="1">
+    <Feature Id="Client" Title="Consul Agent (Client)" Level="1">
       <ComponentGroupRef Id="Consul" />
       <ComponentGroupRef Id="ConsulService" />
+      <ComponentGroupRef Id="ConsulFirewall" />
     </Feature>
 
   </Product>

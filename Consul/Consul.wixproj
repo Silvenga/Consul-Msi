@@ -17,8 +17,8 @@
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <IntermediateOutputPath>obj\$(Configuration)\</IntermediateOutputPath>
     <DefineConstants>Debug</DefineConstants>
-    <LinkerAdditionalOptions>-b ..\Vendor\ -ext WixUtilExtension</LinkerAdditionalOptions>
-    <CompilerAdditionalOptions>-ext WixUtilExtension</CompilerAdditionalOptions>
+    <LinkerAdditionalOptions>-b ..\Vendor\ -ext WixUtilExtension -ext FirewallUtilExtension</LinkerAdditionalOptions>
+    <CompilerAdditionalOptions>-ext WixUtilExtension -ext FirewallUtilExtension</CompilerAdditionalOptions>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <OutputPath>bin\$(Configuration)\</OutputPath>
@@ -28,6 +28,7 @@
     <Compile Include="Components\Consul.wxs" />
     <Compile Include="Components\DirectoryStructure.wxs" />
     <Compile Include="Components\DnsConfiguration.wxs" />
+    <Compile Include="Components\FirewallConfiguration.wxs" />
     <Compile Include="Components\Service.wxs" />
     <Compile Include="Product.wxs" />
   </ItemGroup>

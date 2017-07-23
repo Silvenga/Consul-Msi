@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"
+     xmlns:Firewall="http://schemas.microsoft.com/wix/FirewallExtension">
+  <Fragment>
+
+    <!--https://www.consul.io/docs/agent/options.html#ports-->
+    <!--8301 - UDP/TCP-->
+
+    <Component Id="ConsulSerfLan" Guid="B893F395-8BC3-442E-A55E-5AC71A30B396">
+      <Firewall:FirewallException Id="ConsulSerfLanUDP"
+                                  Description="Allow Consul to gossip over the LAN (UDP)"
+                                  Name="Consul Serf LAN (UDP)"
+                                  Port="8301"
+                                  Protocol="udp" />
+      <Firewall:FirewallException Id="ConsulSerfLanTCP"
+                                  Description="Allow Consul to gossip over the LAN (TCP)"
+                                  Name="Consul Serf LAN (TCP)"
+                                  Port="8301"
+                                  Protocol="tcp" />
+    </Component>
+
+    <ComponentGroup Id="ConsulFirewall">
+      <ComponentRef Id="ConsulSerfLan" />
+    </ComponentGroup>
+
+  </Fragment>
+</Wix>
