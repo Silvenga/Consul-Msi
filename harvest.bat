@@ -1,1 +1,0 @@
-"C:\Program Files (x86)\WiX Toolset v3.10\bin\heat.exe" dir "Vendor" -gg -sfrag -template fragment -out "Consul\Directory.wxs" -cg ConsulBin -dr ConsulBinDirRef -srd -sreg -g1
