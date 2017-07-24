@@ -51,7 +51,6 @@
     </Feature>
 
     <UIRef Id="WixUI_FeatureTree" />
-    <UIRef Id="WixUI_ErrorProgressText" />
 
     <WixVariable Id="WixUILicenseRtf" Value="SourceDir\assets\mpl-2.0.rtf" />
 
