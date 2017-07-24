@@ -14,7 +14,7 @@ Releases are built by Appveyor, linked above, the built installers can be downlo
 Like all MSI's, this installer supports slient installations, for example:
 
 ```cmd
-msiexec /i Consul.msi ADDLOCAL=Consul,Service,Dns,Firewall
+msiexec /i Consul.msi ADDLOCAL=Consul,Service,Dns,Firewall /qn
 ```
 
 Or use `msiexec /i Consul.msi` for an interactive insallation.
