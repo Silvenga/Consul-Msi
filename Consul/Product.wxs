@@ -15,7 +15,8 @@
              Platform="x64"
              Description="Provides packaging for the Consul agent, version $(var.Version)."
              Manufacturer="Silvenga" />
-    <MajorUpgrade AllowDowngrades="yes" />
+    <MajorUpgrade
+      DowngradeErrorMessage="Downgrade was detected. If you are sure you want to downgrade Consul, first uninstall the correctly installed version then re-run this installer." />
     <MediaTemplate EmbedCab="yes" />
 
     <Feature Id="Consul"
