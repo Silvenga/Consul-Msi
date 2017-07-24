@@ -1,6 +1,13 @@
-# Consul-Msi
+# Consul Agent Msi Package
+
+[![Build status](https://img.shields.io/appveyor/ci/Silvenga/Consul-Msi.svg?maxAge=2592000&style=flat-square)](https://ci.appveyor.com/project/Silvenga/Consul-Msi)
+[![License](https://img.shields.io/github/license/Silvenga/Consul-Msi.svg?style=flat-square)](https://github.com/Silvenga/Consul-Msi/blob/master/LICENSE)
 
 A Windows installer for a 64-bit Consul agent. Provided configurations assume client mode only.
+
+## Downloading
+
+Releases are built by Appveyor, linked above, the built installers can be downloaded from the [releases tab](https://github.com/Silvenga/Consul-Msi/releases).
 
 ## Installing
 
@@ -18,5 +25,5 @@ Or use `msiexec /i Consul.msi` for an interactive insallation.
 | ------------- |-------------
 | Consul  | Install the Consul agent binary and add it to the system path. This option provides no configuration files by default.
 | Service | Configure Consul to run as a service and configure defaults (e.g. data directory).  
-| Dns | Configure to run as a local DNS server. Modifies Window's DNSCache service to play nice with Consul and listens on 127.0.0.1:53.
-| Firewall | Open ports required for LAN gossip.
+| Dns | Configure Consul to run as a local DNS server. Modifies Window's DNSCache service to play nice with Consul and set's Consul to listen on `127.0.0.1:53`.
+| Firewall | Confugure Window's Firewall to open ports required for LAN gossip.
