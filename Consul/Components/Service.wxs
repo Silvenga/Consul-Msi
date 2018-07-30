@@ -11,7 +11,7 @@
 
     <Component Id="ConsulService" Guid="864949E2-5644-4DA6-9A4D-215D0BD3FE5F" Directory="ConsulDir" Win64="yes">
 
-      <?define Name="consul-agent" ?>
+      <?define Name="consul" ?>
 
       <File Id="NssnExe" Source="SourceDir\nssm.exe" KeyPath="yes" />
 
