@@ -1,6 +1,6 @@
 # Consul Agent Msi Package
 
-[![Build status](https://img.shields.io/appveyor/ci/Silvenga/Consul-Msi.svg?maxAge=2592000&style=flat-square)](https://ci.appveyor.com/project/Silvenga/Consul-Msi)
+[![Build status](https://github.com/Silvenga/Consul-Msi/workflows/CI/badge.svg)](https://github.com/Silvenga/Consul-Msi/actions)
 [![License](https://img.shields.io/github/license/Silvenga/Consul-Msi.svg?style=flat-square)](https://github.com/Silvenga/Consul-Msi/blob/master/LICENSE)
 
 > BREAKING CHANGE: Changed the service name from `consul-agent` to `consul` to match the standard Linux service name.
