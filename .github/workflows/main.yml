@@ -12,12 +12,11 @@ jobs:
     runs-on: windows-2019
     steps:
     - uses: actions/checkout@v1
-    - name: Prepare
-      shell: pwsh
-      run: ./build.ps1
+    - uses: warrenbuckley/Setup-MSBuild@v1
 
-    - name: Setup MSBuild
-      uses: warrenbuckley/Setup-MSBuild@v1
+    - name: Restore
+      shell: pwsh
+      run: ./restore.ps1
     - name: Build
       run: msbuild ./Consul.sln /p:Configuration=Release /p:Platform=x86
 
