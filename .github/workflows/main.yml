@@ -20,7 +20,7 @@ jobs:
     - name: Build
       run: msbuild ./Consul.sln /p:Configuration=Release /p:Platform=x86
 
-    - name: Publish
+    - name: Publish (On Release Tags)
       uses: ncipollo/release-action@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
