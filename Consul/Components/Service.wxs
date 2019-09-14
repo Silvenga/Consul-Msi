@@ -6,14 +6,14 @@
   <Fragment>
 
     <Component Id="ConsulJson" Directory="ConsulDir" Guid="BE10E151-42A1-4E46-8F9F-5792031DDEE5" Win64="yes">
-      <File Id="ConsulJson" KeyPath="yes" Name="consul.json" Source="SourceDir\configs\main.json" />
+      <File Id="ConsulJson" KeyPath="yes" Name="consul.json" Source="..\Vendor\configs\main.json" />
     </Component>
 
     <Component Id="ConsulService" Guid="864949E2-5644-4DA6-9A4D-215D0BD3FE5F" Directory="ConsulDir" Win64="yes">
 
       <?define Name="consul" ?>
 
-      <File Id="NssnExe" Source="SourceDir\nssm.exe" KeyPath="yes" />
+      <File Id="NssnExe" Source="..\Vendor\nssm.exe" KeyPath="yes" />
 
       <ServiceInstall Id="EnsureService"
                       Account="LocalSystem"

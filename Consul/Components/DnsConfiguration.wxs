@@ -6,7 +6,7 @@
   <Fragment>
 
     <Component Id="ConsulConfigureDns" Guid="DACED64B-68DB-4B17-BB37-12215BC3558F" Directory="ConsulConfigDir" Win64="yes">
-      <File Id="ConsulDnsJson" Name="dns.json" Source="SourceDir\configs\dns.json" KeyPath="yes" />
+      <File Id="ConsulDnsJson" Name="dns.json" Source="..\Vendor\configs\dns.json" KeyPath="yes" />
     </Component>
 
     <Component Id="ConsulConfigureDnsCache" Guid="C133A4EC-31F3-485A-B2E1-F2D3FB1F0ABD" Directory="ConsulDir" Win64="yes">
