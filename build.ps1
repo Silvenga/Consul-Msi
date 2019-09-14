@@ -14,13 +14,13 @@ Write-Host "Downloading Consul from $downloadUrl."
 Invoke-WebRequest -UseBasicParsing -Uri $downloadUrl -OutFile $outputArchive
 
 Write-Host "Checking downloaded archive '$outputArchive' for integrity."
-$downloadHash = (Get-FileHash -Path $outputArchive -Algorithm SHA256).Hash
+$downloadHash = (Get-FileHash -Path $outputArchive -Algorithm SHA256).Hash.ToLower()
 Write-Host "Got $downloadHash, expected $hash."
 $hasMatches = $hash -eq $downloadHash
 
 if ($hasMatches)
 {
-    Write-Host "Archive hash matches, will containe."
+    Write-Host "Archive hash matches, will continue."
 
     Write-Host "Copying consul to the vendor directory."
     Expand-Archive $outputArchive -DestinationPath $outputDirectory -Force
