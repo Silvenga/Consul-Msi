@@ -1,0 +1,29 @@
+name: CI
+
+# on: 
+#   push:
+#     tags:
+#     - '*'
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-2019
+    steps:
+    - uses: actions/checkout@v1
+    - name: Prepare
+      shell: pwsh
+      run: ./build.ps1
+
+    - name: Setup MSBuild
+      uses: warrenbuckley/Setup-MSBuild@v1
+    - name: Build
+      run: msbuild ./Consul.sln /p:Configuration=Release /p:Platform=x86
+
+    # - name: Create Release
+    #   uses: ncipollo/release-action@v1
+    #   with:
+    #     artifacts: "release.tar.gz,foo/*.txt"
+    #     body: 
+    #     token: ${{ secrets.GITHUB_TOKEN }}
