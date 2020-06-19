@@ -16,7 +16,7 @@ if (-not $clean)
 Write-Host "Searching for the $Version release."
 
 $hashUrl = "https://releases.hashicorp.com/consul/" + $Version + "/consul_" + $Version + "_SHA256SUMS"
-$response = Invoke-WebRequest $hashUrl
+$response = Invoke-WebRequest $hashUrl -UseBasicParsing
 $downloadSuccess = $response.StatusCode -eq "200"
 if (-not $downloadSuccess)
 {
