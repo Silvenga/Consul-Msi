@@ -24,6 +24,6 @@ jobs:
       uses: ncipollo/release-action@v1
       if: startsWith(github.ref, 'refs/tags/')
       with:
-        artifact: '**\*.msi'
+        artifacts: '**\*.msi'
         body: Upstream release.
         token: ${{ secrets.GITHUB_TOKEN }}
